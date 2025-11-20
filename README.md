@@ -110,3 +110,14 @@ To make this easy to use, add a button to your Word toolbar:
 1. Click your new button to turn the lights off 🌑 - Check the new Mods Tab - the button is there.
 2. Do your work in the word file - read, write, edit, etc.  
 3. Press **Ctrl+S** to save or manually save the file. The screen will flicker white briefly — this is normal\! --> your file is saved as a normal white document, so it looks correct when you send it to others.
+
+## **⚠️ CRITICAL: Closing the App **
+
+Because the script turns the black background back on immediately after saving (so you can keep working), Word thinks the document has changed again.
+
+If you save manually and then immediately click the X to close Word:
+
+1. Word will ask:"Do you want to save changes?"
+2. You must click NO.
+3. Why? You just saved the clean version a moment ago. If you click "Yes" now, it will save the file with the black background active, and the next person who opens it will see a black page!
+
