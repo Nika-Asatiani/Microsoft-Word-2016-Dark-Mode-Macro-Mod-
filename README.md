@@ -21,78 +21,79 @@ Word 2016 normally only lets you darken the ribbon at the top, leaving the page 
 6. Close the code editor window.
 
 ## **💻 The Code**
-
-' Helper function to check if we are currently in Dark Mode  
-Function IsDarkModeOn() As Boolean  
-    Dim doc As Document  
-    Set doc \= ActiveDocument  
-    ' Check if background visibility is ON and color is BLACK  
-    If ActiveWindow.View.DisplayBackgrounds \= True And doc.Background.Fill.ForeColor.RGB \= RGB(0, 0, 0\) Then  
-        IsDarkModeOn \= True  
-    Else  
-        IsDarkModeOn \= False  
-    End If  
+```vb
+' Helper function to check if we are currently in Dark Mode
+Function IsDarkModeOn() As Boolean
+    Dim doc As Document
+    Set doc = ActiveDocument
+    ' We check the View setting specifically now
+    If ActiveWindow.View.DisplayBackgrounds = True And doc.Background.Fill.ForeColor.RGB = RGB(0, 0, 0) Then
+        IsDarkModeOn = True
+    Else
+        IsDarkModeOn = False
+    End If
 End Function
 
-' The Main Button Script  
-Sub ToggleDarkMode()  
-    Dim doc As Document  
-    Set doc \= ActiveDocument  
-      
-    If IsDarkModeOn() Then  
-        ' \--- SWITCH TO LIGHT MODE (CLEAN) \---  
-          
-        ' Turn off background visibility  
-        ActiveWindow.View.DisplayBackgrounds \= False  
-          
-        ' Remove the fill color  
-        doc.Background.Fill.Visible \= msoFalse  
-          
-        ' Reset text to Auto (Black)  
-        doc.Content.Font.ColorIndex \= wdAuto  
-          
-        ' Ensure we are in Print Layout  
-        ActiveWindow.View.Type \= wdPrintView  
-    Else  
-        ' \--- SWITCH TO DARK MODE \---  
-          
-        ' 1\. Force Word to SHOW the background color  
-        ActiveWindow.View.DisplayBackgrounds \= True  
-          
-        ' 2\. Set background to Black  
-        doc.Background.Fill.Visible \= msoTrue  
-        doc.Background.Fill.ForeColor.RGB \= RGB(0, 0, 0\)  
-        doc.Background.Fill.Solid  
-          
-        ' 3\. Set text to Light Gray (easier on eyes)  
-        doc.Content.Font.Color \= RGB(220, 220, 220\)  
-          
-        ' 4\. Ensure we stay in Print Layout  
-        ActiveWindow.View.Type \= wdPrintView  
-    End If  
+' The Main Button Script
+Sub ToggleDarkMode()
+    Dim doc As Document
+    Set doc = ActiveDocument
+    
+    If IsDarkModeOn() Then
+        ' --- SWITCH TO LIGHT MODE (CLEAN) ---
+        
+        ' Turn off background visibility in Print View
+        ActiveWindow.View.DisplayBackgrounds = False
+        
+        ' Remove the fill color
+        doc.Background.Fill.Visible = msoFalse
+        
+        ' Reset text to Auto (Black)
+        doc.Content.Font.ColorIndex = wdAuto
+        
+        ' Ensure we are in Print Layout
+        ActiveWindow.View.Type = wdPrintView
+    Else
+        ' --- SWITCH TO DARK MODE ---
+        
+        ' 1. Force Word to actually SHOW the background color in Print View
+        ActiveWindow.View.DisplayBackgrounds = True
+        
+        ' 2. Set background to Black
+        doc.Background.Fill.Visible = msoTrue
+        doc.Background.Fill.ForeColor.RGB = RGB(0, 0, 0)
+        doc.Background.Fill.Solid
+        
+        ' 3. Set text to Light Gray
+        doc.Content.Font.Color = RGB(220, 220, 220)
+        
+        ' 4. Ensure we stay in Print Layout (Normal pages)
+        ActiveWindow.View.Type = wdPrintView
+    End If
 End Sub
 
-' INTERCEPT SAVE: Runs automatically when you click Save or Ctrl+S  
-Sub FileSave()  
-    If IsDarkModeOn() Then  
-        ToggleDarkMode ' Turn off Dark Mode temporarily  
-        ActiveDocument.Save  
-        ToggleDarkMode ' Turn Dark Mode back on  
-    Else  
-        ActiveDocument.Save  
-    End If  
+' INTERCEPT SAVE: Runs automatically when you click Save or Ctrl+S
+Sub FileSave()
+    If IsDarkModeOn() Then
+        ToggleDarkMode ' Turn off Dark Mode temporarily
+        ActiveDocument.Save
+        ToggleDarkMode ' Turn Dark Mode back on
+    Else
+        ActiveDocument.Save
+    End If
 End Sub
 
-' INTERCEPT SAVE AS: Runs automatically when you use Save As  
-Sub FileSaveAs()  
-    If IsDarkModeOn() Then  
-        ToggleDarkMode ' Turn off  
-        Dialogs(wdDialogFileSaveAs).Show  
-        ToggleDarkMode ' Turn back on  
-    Else  
-        Dialogs(wdDialogFileSaveAs).Show  
-    End If  
+' INTERCEPT SAVE AS: Runs automatically when you use Save As
+Sub FileSaveAs()
+    If IsDarkModeOn() Then
+        ToggleDarkMode ' Turn off
+        Dialogs(wdDialogFileSaveAs).Show
+        ToggleDarkMode ' Turn back on
+    Else
+        Dialogs(wdDialogFileSaveAs).Show
+    End If
 End Sub
+```
 
 ## **🔘 How to Add the Button**
 
