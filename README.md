@@ -2,7 +2,7 @@
 
 This is a simple script (VBA Macro) that forces Microsoft Word 2016 to use a **True Dark Mode** (Black page, White text).
 
-Word 2016 normally only lets you darken the ribbon at the top, leaving the page bright white. This mod fixes that.
+Word 2016 normally only lets you darken the ribbon at the top, leaving the page bright white. This mod fixes that. I tested and confirmed that it works on Word 2016 installed Windows 11. 
 
 ## **✨ Features**
 
@@ -102,11 +102,11 @@ To make this easy to use, add a button to your Word toolbar:
 1. Right-click the top menu ribbon in Word and pick **Customize the Ribbon**.  
 2. On the right side, click **New Tab** and name it "Mods" (or "Dark Mode").  
 3. On the left side, click the dropdown and choose **Macros**.  
-4. Click Normal.Module1.ToggleDarkMode and click the **Add \>\>** button.  
+4. Click Normal.Module1.ToggleDarkMode and click the **Add \>\>** button (you need to add it to the custom group - the group name or properties can be anything you like).  
 5. Click **OK**.
 
 ## **🚀 How to Use**
 
-1. Click your new button to turn the lights off. 🌑  
-2. Work comfortably.  
-3. Press **Ctrl+S** to save. The screen will flicker white briefly—this is normal\! It's cleaning the file so your boss/teacher sees a normal document.
+1. Click your new button to turn the lights off 🌑 - Check the new Mods Tab - the button is there.
+2. Do your work in the word file - read, write, edit, etc.  
+3. Press **Ctrl+S** to save or manually save the file. The screen will flicker white briefly — this is normal\! --> your file is saved as a normal white document, so it looks correct when you send it to others.
