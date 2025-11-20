@@ -111,7 +111,7 @@ To make this easy to use, add a button to your Word toolbar:
 2. Do your work in the word file - read, write, edit, etc.  
 3. Press **Ctrl+S** to save or manually save the file. The screen will flicker white briefly — this is normal\! --> your file is saved as a normal white document, so it looks correct when you send it to others.
 
-## **⚠️ CRITICAL: Closing the App **
+## **⚠️ CRITICAL: Closing the App**
 
 Because the script turns the black background back on immediately after saving (so you can keep working), Word thinks the document has changed again.
 
